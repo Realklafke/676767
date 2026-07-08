@@ -847,4 +847,275 @@
         <!-- Seção Segurança -->
         <div id="secao-seguranca" class="section-content">
           <h2>🔒 Segurança em Redes Industriais</h2>
-          <p class="display-desc">A
+          <p class="display-desc">A segurança cibernética é crítica para redes industriais, protegendo sistemas e dados contra ameaças que podem comprometer a produção e a integridade física.</p>
+
+          <div class="display-panel">
+            <div class="badges">
+              <span class="badge danger">Crítico</span>
+              <span class="badge warning">IEC 62443</span>
+              <span class="badge info">NIST</span>
+            </div>
+
+            <h3>Principais Ameaças</h3>
+            <ul style="margin: 15px 0; padding-left: 20px; color: var(--text-muted);">
+              <li>Malware e ransomware</li>
+              <li>Ataques de negação de serviço (DDoS)</li>
+              <li>Engenharia social</li>
+              <li>Atualizações não autorizadas</li>
+            </ul>
+
+            <h3>Medidas de Proteção</h3>
+            <div class="pros-cons">
+              <div class="list-box pros">
+                <h4>Boas Práticas</h4>
+                <ul>
+                  <li>Segmentação de rede</li>
+                  <li>Firewalls industriais</li>
+                  <li>Autenticação forte</li>
+                  <li>Monitoramento contínuo</li>
+                </ul>
+              </div>
+              <div class="list-box cons">
+                <h4>Desafios</h4>
+                <ul>
+                  <li>Equipamentos legados</li>
+                  <li>Atualizações complexas</li>
+                  <li>Disponibilidade 24/7</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="interactive-demo">
+              <h4>🔐 Nível de Segurança Recomendado</h4>
+              <p>Avalie o nível de segurança da sua rede industrial:</p>
+              <div class="demo-controls">
+                <input type="range" id="segurancaSlider" min="0" max="100" value="50" oninput="atualizarSeguranca(this.value)">
+                <span id="nivelSeguranca" style="font-weight: bold;">50%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="segurancaProgress" style="width: 50%;">50%</div>
+              </div>
+              <p id="segurancaDescricao" style="color: var(--text-muted); margin-top: 10px;">Nível moderado de segurança - implemente medidas adicionais.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Seção Quiz -->
+        <div id="secao-quiz" class="section-content">
+          <h2>🧠 Quiz de Conhecimento</h2>
+          <p class="display-desc">Teste seus conhecimentos sobre redes industriais! Responda às perguntas abaixo e verifique seu aprendizado.</p>
+
+          <div id="quiz-container">
+            <div class="quiz-section">
+              <div class="quiz-question" id="pergunta-0">
+                <h4>1. Qual protocolo é mais adequado para comunicação em tempo real na indústria?</h4>
+                <div class="quiz-options">
+                  <button class="quiz-option" onclick="responderQuiz(0, 'a', this)">a) HTTP</button>
+                  <button class="quiz-option" onclick="responderQuiz(0, 'b', this)">b) PROFINET</button>
+                  <button class="quiz-option" onclick="responderQuiz(0, 'c', this)">c) FTP</button>
+                  <button class="quiz-option" onclick="responderQuiz(0, 'd', this)">d) SMTP</button>
+                </div>
+                <div id="quiz-result-0" class="quiz-result" style="display:none;"></div>
+              </div>
+
+              <div class="quiz-question" id="pergunta-1">
+                <h4>2. Qual topologia oferece maior redundância em redes industriais?</h4>
+                <div class="quiz-options">
+                  <button class="quiz-option" onclick="responderQuiz(1, 'a', this)">a) Estrela</button>
+                  <button class="quiz-option" onclick="responderQuiz(1, 'b', this)">b) Barramento</button>
+                  <button class="quiz-option" onclick="responderQuiz(1, 'c', this)">c) Anel</button>
+                  <button class="quiz-option" onclick="responderQuiz(1, 'd', this)">d) Malha</button>
+                </div>
+                <div id="quiz-result-1" class="quiz-result" style="display:none;"></div>
+              </div>
+
+              <div class="quiz-question" id="pergunta-2">
+                <h4>3. Qual meio físico é imune a interferências eletromagnéticas?</h4>
+                <div class="quiz-options">
+                  <button class="quiz-option" onclick="responderQuiz(2, 'a', this)">a) Cabo de Cobre</button>
+                  <button class="quiz-option" onclick="responderQuiz(2, 'b', this)">b) Fibra Óptica</button>
+                  <button class="quiz-option" onclick="responderQuiz(2, 'c', this)">c) Wireless</button>
+                  <button class="quiz-option" onclick="responderQuiz(2, 'd', this)">d) Coaxial</button>
+                </div>
+                <div id="quiz-result-2" class="quiz-result" style="display:none;"></div>
+              </div>
+
+              <div class="quiz-question" id="pergunta-3">
+                <h4>4. Qual é o coração da automação industrial?</h4>
+                <div class="quiz-options">
+                  <button class="quiz-option" onclick="responderQuiz(3, 'a', this)">a) Switch</button>
+                  <button class="quiz-option" onclick="responderQuiz(3, 'b', this)">b) CLP</button>
+                  <button class="quiz-option" onclick="responderQuiz(3, 'c', this)">c) Sensor</button>
+                  <button class="quiz-option" onclick="responderQuiz(3, 'd', this)">d) Atuador</button>
+                </div>
+                <div id="quiz-result-3" class="quiz-result" style="display:none;"></div>
+              </div>
+
+              <div class="quiz-question" id="pergunta-4">
+                <h4>5. Qual protocolo é recomendado para integração com sistemas MES e ERP?</h4>
+                <div class="quiz-options">
+                  <button class="quiz-option" onclick="responderQuiz(4, 'a', this)">a) Modbus</button>
+                  <button class="quiz-option" onclick="responderQuiz(4, 'b', this)">b) CANopen</button>
+                  <button class="quiz-option" onclick="responderQuiz(4, 'c', this)">c) OPC UA</button>
+                  <button class="quiz-option" onclick="responderQuiz(4, 'd', this)">d) PROFINET</button>
+                </div>
+                <div id="quiz-result-4" class="quiz-result" style="display:none;"></div>
+              </div>
+
+              <div style="margin-top: 30px; text-align: center;">
+                <button onclick="reiniciarQuiz()" style="padding: 12px 30px; background: var(--accent); color: white; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: 0.3s;">
+                  🔄 Reiniciar Quiz
+                </button>
+                <span id="quiz-pontuacao" style="margin-left: 20px; font-weight: 700; font-size: 1.2rem; color: var(--primary);">
+                  Acertos: 0/5
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Variáveis para controle do quiz
+    let quizRespostas = {
+      0: { resposta: 'b', respondido: false },
+      1: { resposta: 'd', respondido: false },
+      2: { resposta: 'b', respondido: false },
+      3: { resposta: 'b', respondido: false },
+      4: { resposta: 'c', respondido: false }
+    };
+    let quizPontuacao = 0;
+
+    function mudarSecao(id, element) {
+      // Remove active de todos os itens do menu
+      document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+      element.classList.add('active');
+
+      // Esconde todas as seções e mostra a selecionada
+      document.querySelectorAll('.section-content').forEach(section => section.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function mostrarConteudo(id, element) {
+      // Remove selected de todos os cards
+      const parent = element.closest('.options-grid');
+      if (parent) {
+        parent.querySelectorAll('.option-card').forEach(card => card.classList.remove('selected'));
+        element.classList.add('selected');
+      }
+
+      // Esconde todos os painéis no contexto correto
+      const section = element.closest('.section-content');
+      if (section) {
+        section.querySelectorAll('.display-panel').forEach(panel => panel.style.display = 'none');
+        const target = document.getElementById(id);
+        if (target) {
+          target.style.display = 'block';
+        }
+      }
+    }
+
+    function responderQuiz(pergunta, resposta, element) {
+      if (quizRespostas[pergunta].respondido) return;
+
+      const resultado = document.getElementById(`quiz-result-${pergunta}`);
+      const opcoes = element.closest('.quiz-options').querySelectorAll('.quiz-option');
+
+      // Desabilita todas as opções
+      opcoes.forEach(btn => btn.style.pointerEvents = 'none');
+
+      const correta = quizRespostas[pergunta].resposta;
+      let acertou = resposta === correta;
+
+      if (acertou) {
+        quizPontuacao++;
+        element.classList.add('correct');
+        resultado.style.display = 'block';
+        resultado.className = 'quiz-result correct';
+        resultado.textContent = '✅ Correto! Muito bem!';
+      } else {
+        element.classList.add('incorrect');
+        // Mostra a resposta correta
+        opcoes.forEach(btn => {
+          if (btn.textContent.trim().startsWith(correta + ')')) {
+            btn.classList.add('correct');
+          }
+        });
+        resultado.style.display = 'block';
+        resultado.className = 'quiz-result incorrect';
+        resultado.textContent = '❌ Incorreto. A resposta correta é ' + correta + ')';
+      }
+
+      quizRespostas[pergunta].respondido = true;
+      document.getElementById('quiz-pontuacao').textContent = `Acertos: ${quizPontuacao}/5`;
+    }
+
+    function reiniciarQuiz() {
+      quizPontuacao = 0;
+      for (let i = 0; i < 5; i++) {
+        quizRespostas[i].respondido = false;
+        const resultado = document.getElementById(`quiz-result-${i}`);
+        resultado.style.display = 'none';
+        resultado.className = 'quiz-result';
+
+        const opcoes = document.querySelector(`#pergunta-${i} .quiz-options`).querySelectorAll('.quiz-option');
+        opcoes.forEach(btn => {
+          btn.className = 'quiz-option';
+          btn.style.pointerEvents = 'auto';
+        });
+      }
+      document.getElementById('quiz-pontuacao').textContent = 'Acertos: 0/5';
+    }
+
+    function atualizarSeguranca(valor) {
+      const progress = document.getElementById('segurancaProgress');
+      const nivel = document.getElementById('nivelSeguranca');
+      const descricao = document.getElementById('segurancaDescricao');
+
+      progress.style.width = valor + '%';
+      progress.textContent = valor + '%';
+      nivel.textContent = valor + '%';
+
+      if (valor < 30) {
+        descricao.textContent = '⚠️ Nível crítico de segurança - implemente medidas urgentes!';
+        progress.style.background = 'linear-gradient(90deg, var(--danger), #ff6b6b)';
+      } else if (valor < 60) {
+        descricao.textContent = '⚠️ Nível moderado de segurança - implemente medidas adicionais.';
+        progress.style.background = 'linear-gradient(90deg, var(--warning), #ffb74d)';
+      } else if (valor < 80) {
+        descricao.textContent = '✅ Bom nível de segurança - continue monitorando.';
+        progress.style.background = 'linear-gradient(90deg, #66bb6a, var(--success))';
+      } else {
+        descricao.textContent = '✅ Excelente nível de segurança! Parabéns!';
+        progress.style.background = 'linear-gradient(90deg, var(--success), #1b5e20)';
+      }
+    }
+
+    // Inicializa o primeiro painel para cada seção
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mostra o primeiro painel de Meios Físicos
+      const primeiroPainelFisico = document.querySelector('#secao-fisico .display-panel');
+      if (primeiroPainelFisico) primeiroPainelFisico.style.display = 'block';
+
+      // Mostra o primeiro painel de Topologias
+      const primeiroPainelTopo = document.querySelector('#secao-topologia .display-panel');
+      if (primeiroPainelTopo) primeiroPainelTopo.style.display = 'block';
+
+      // Mostra o primeiro painel de Protocolos
+      const primeiroPainelProto = document.querySelector('#secao-protocolos .display-panel');
+      if (primeiroPainelProto) primeiroPainelProto.style.display = 'block';
+
+      // Mostra o primeiro painel de Hardware
+      const primeiroPainelHW = document.querySelector('#secao-hardware .display-panel');
+      if (primeiroPainelHW) primeiroPainelHW.style.display = 'block';
+
+      // Inicializa slider de segurança
+      const slider = document.getElementById('segurancaSlider');
+      if (slider) atualizarSeguranca(slider.value);
+    });
+  </script>
+
+</body>
+</html>
