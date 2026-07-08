@@ -22,39 +22,39 @@
     }
 
     .container {
-      max-width: 900px;
+      max-width: 1000px;
       width: 100%;
       background: white;
       border-radius: 24px;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
       overflow: hidden;
-      padding: 30px;
+      padding: 35px;
     }
 
     h1 {
-      font-size: 2rem;
-      font-weight: 600;
+      font-size: 2.2rem;
+      font-weight: 700;
       color: #0b2b44;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       margin-bottom: 6px;
       flex-wrap: wrap;
     }
 
     h1 small {
       font-size: 1rem;
-      font-weight: 400;
+      font-weight: 500;
       color: #2c5f7e;
       background: #e6edf5;
-      padding: 4px 14px;
+      padding: 6px 16px;
       border-radius: 40px;
     }
 
     .subhead {
       color: #3a5a72;
       margin-bottom: 28px;
-      font-size: 0.95rem;
+      font-size: 1rem;
       border-left: 4px solid #00a1b0;
       padding-left: 14px;
     }
@@ -71,9 +71,9 @@
     .tab-btn {
       background: transparent;
       border: none;
-      padding: 12px 24px;
-      font-size: 1rem;
-      font-weight: 500;
+      padding: 14px 28px;
+      font-size: 1.05rem;
+      font-weight: 600;
       color: #3f5b74;
       border-radius: 20px 20px 0 0;
       cursor: pointer;
@@ -92,7 +92,6 @@
       color: #003153;
       border: 2px solid #dbe3ea;
       border-bottom-color: white;
-      font-weight: 600;
     }
 
     .tab-content {
@@ -112,16 +111,16 @@
     /* Cards (Aba 1) */
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 18px;
-      margin-bottom: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-bottom: 25px;
     }
 
     .card {
       background: #fafcff;
       border: 1px solid #d7e0e8;
       border-radius: 18px;
-      padding: 24px 14px;
+      padding: 26px 16px;
       text-align: center;
       cursor: pointer;
       transition: 0.2s;
@@ -140,13 +139,13 @@
     }
 
     .card-icon {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+      font-size: 2.8rem;
+      margin-bottom: 12px;
     }
 
     .card h3 {
       color: #0b2b44;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       margin-bottom: 4px;
     }
 
@@ -154,22 +153,22 @@
     .topo-buttons {
       display: flex;
       gap: 14px;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       flex-wrap: wrap;
     }
 
     .topo-btn {
       background: white;
       border: 1px solid #bccbd6;
-      padding: 12px 28px;
+      padding: 14px 32px;
       border-radius: 30px;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 1rem;
       color: #1f435b;
       cursor: pointer;
       transition: 0.2s;
       flex: 1;
-      min-width: 180px;
+      min-width: 200px;
       text-align: center;
     }
 
@@ -184,42 +183,62 @@
       color: white;
     }
 
-    /* Painel de Informações Dinâmicas */
+    /* Painel de Informações */
     .info-panel {
       background: #f7faff;
       border-radius: 18px;
-      padding: 24px;
+      padding: 30px;
       border: 1px solid #dae3ec;
-      border-left: 5px solid #00838f;
+      border-left: 6px solid #00838f;
     }
 
     .info-panel h3 {
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       color: #002b3b;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .info-panel p {
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: #144a5e;
       line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* Especificações Técnicas (Novidade) */
+    .tech-specs {
+      background: #edf3f8;
+      padding: 15px 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .spec-item {
+      font-size: 0.95rem;
+      color: #2c5f7e;
+    }
+
+    .spec-item strong {
+      color: #0b2b44;
     }
 
     /* Listas de Prós e Contras */
     .lists-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
       border-top: 1px solid #dae3ec;
-      padding-top: 15px;
+      padding-top: 20px;
     }
 
     .list-sect h4 {
-      font-size: 0.9rem;
+      font-size: 1rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .list-sect.pros h4 { color: #1f8b4c; }
@@ -231,10 +250,11 @@
 
     .list-sect li {
       position: relative;
-      padding-left: 20px;
-      margin-bottom: 8px;
-      font-size: 0.95rem;
+      padding-left: 22px;
+      margin-bottom: 10px;
+      font-size: 1rem;
       color: #2c4e5e;
+      line-height: 1.5;
     }
 
     .list-sect.pros li::before {
@@ -243,6 +263,7 @@
       left: 0;
       color: #1f8b4c;
       font-weight: bold;
+      font-size: 1.1rem;
     }
 
     .list-sect.contras li::before {
@@ -251,6 +272,7 @@
       left: 0;
       color: #b13e3e;
       font-weight: bold;
+      font-size: 1.1rem;
     }
   </style>
 </head>
@@ -258,7 +280,7 @@
 
   <div class="container">
     <h1>Guia Visual de Redes <small>Automação Industrial</small></h1>
-    <div class="subhead">Guia prático sobre a infraestrutura física e lógica no chão de fábrica.</div>
+    <div class="subhead">Material didático e técnico sobre a infraestrutura de comunicação no chão de fábrica moderno.</div>
 
     <div class="tabs">
       <button class="tab-btn active" onclick="alternarAba(event, 'aba-cabos')">Cabos Industriais</button>
@@ -282,8 +304,14 @@
       </div>
 
       <div class="info-panel">
-        <h3 id="cabo-titulo">Par Trançado (Cabo de Rede)</h3>
-        <p id="cabo-desc">É o cabo mais comum no chão de fábrica (utilizado em redes Profinet e EtherNet/IP). Na indústria, ele recebe uma blindagem especial (STP) para evitar que o ruído eletromagnético de motores elétricos e inversores de frequência atrapalhe os dados de CLPs e sensores.</p>
+        <h3 id="cabo-titulo">Par Trançado (Cabo Ethernet Industrial)</h3>
+        <p id="cabo-desc">É a espinha dorsal das redes de automação modernas. Diferente do cabo de rede da sua casa, o cabo industrial possui blindagem extra grossa contra interferência gerada por grandes motores e inversores, além de jaquetas externas resistentes a óleos, produtos químicos e dobras mecânicas contínuas.</p>
+        
+        <div class="tech-specs" id="cabo-specs">
+          <div class="spec-item"><strong>Onde é usado:</strong> Conexão direta entre CLPs, painéis de controle, IHMs e Switches de campo.</div>
+          <div class="spec-item"><strong>Protocolos Comuns:</strong> Profinet, EtherNet/IP, Modbus TCP.</div>
+          <div class="spec-item"><strong>Limite Técnico:</strong> Distância máxima de 100 metros por segmento sem repetidores.</div>
+        </div>
       </div>
     </div>
 
@@ -294,22 +322,28 @@
       </div>
 
       <div class="info-panel">
-        <h3 id="topo-titulo">Layout em Estrela</h3>
-        <p id="topo-desc">Nesta arquitetura, todos os equipamentos da fábrica (CLPs, IHMs, robôs) são conectados individualmente a um dispositivo central, geralmente um Switch Industrial.</p>
+        <h3 id="topo-titulo">Layout em Estrela (Star Network)</h3>
+        <p id="topo-desc">Toda a comunicação passa por um nó centralizador, que distribui as informações individualmente para cada máquina. Se tornou o layout dominante com o crescimento da Ethernet Industrial no chão de fábrica.</p>
         
+        <div class="tech-specs" id="topo-specs">
+          <div class="spec-item"><strong>Equipamento Central:</strong> Switch Industrial (Gerenciável ou Não Gerenciável).</div>
+          <div class="spec-item"><strong>Foco de Aplicação:</strong> Células robotizadas integradas, linhas de montagem modernas e controle de processos críticos.</div>
+        </div>
+
         <div class="lists-container">
           <div class="list-sect pros">
-            <h4>Vantagens</h4>
+            <h4>Vantagens no Chão de Fábrica</h4>
             <ul id="topo-vantagens">
-              <li>Se um cabo quebrar, apenas aquela máquina isolada perde a conexão.</li>
-              <li>Muito fácil de identificar falhas e adicionar novas máquinas à rede.</li>
+              <li>Isolamento de Falhas: Se o cabo de um robô quebrar, apenas ele para; o resto da fábrica continua operando normalmente.</li>
+              <li>Manutenção Ágil: Muito fácil localizar problemas em cabos defeituosos olhando os LEDs indicadores do Switch central.</li>
+              <li>Fácil Expansão: Adicionar uma nova máquina exige apenas passar um cabo dela até o Switch central, sem mexer nos outros dispositivos.</li>
             </ul>
           </div>
           <div class="list-sect contras">
-            <h4>Desvantagens</h4>
+            <h4>Desvantagens no Chão de Fábrica</h4>
             <ul id="topo-desvantagens">
-              <li>Dependência total do Switch central (se ele queimar, a fábrica inteira para).</li>
-              <li>Gasta muito mais metros de cabo, já que todos devem ir até o centro.</li>
+              <li>Ponto Único de Falha: Toda a rede depende do Switch central. Se ele queimar ou perder energia, a comunicação de todo o setor morre de uma só vez.</li>
+              <li>Custo de Infraestrutura: Exige uma metragem de cabos muito maior, gerando maior gasto financeiro e canaletas mais cheias.</li>
             </ul>
           </div>
         </div>
@@ -318,35 +352,72 @@
   </div>
 
   <script>
-    // Dados Dinâmicos dos Cabos
+    // Dados Expandidos dos Cabos
     const dadosCabos = {
       par: {
-        titulo: "Par Trançado (Cabo de Rede)",
-        desc: "É o cabo mais comum no chão de fábrica (utilizado em redes Profinet e EtherNet/IP). Na indústria, ele recebe uma blindagem especial (STP) para evitar que o ruído eletromagnético de motores elétricos e inversores de frequência atrapalhe os dados de CLPs e sensores."
+        titulo: "Par Trançado (Cabo Ethernet Industrial)",
+        desc: "É a espinha dorsal das redes de automação modernas. Diferente do cabo de rede da sua casa, o cabo industrial possui blindagem extra grossa contra interferência gerada por grandes motores e inversores, além de jaquetas externas resistentes a óleos, produtos químicos e dobras mecânicas contínuas.",
+        specs: [
+          "<strong>Onde é usado:</strong> Conexão direta entre CLPs, painéis de controle, IHMs e Switches de campo.",
+          "<strong>Protocolos Comuns:</strong> Profinet, EtherNet/IP, Modbus TCP.",
+          "<strong>Limite Técnico:</strong> Distância máxima de 100 metros por segmento sem repetidores."
+        ]
       },
       fibra: {
-        titulo: "Fibra Óptica",
-        desc: "Utilizada para conectar grandes distâncias na fábrica (ex: ligar a sala de servidores central até um galpão distante). É 100% imune a interferências eletromagnéticas e ruídos de alta tensão, garantindo velocidade máxima e segurança."
+        titulo: "Fibra Óptica (Industrial)",
+        desc: "Meio de transmissão baseado em pulsos de luz que trafegam por filamentos de vidro ou plástico. Por não conduzir eletricidade, é o meio físico mais seguro e blindado contra panes elétricas do mundo industrial.",
+        specs: [
+          "<strong>Onde é usado:</strong> Conexões de longa distância, interligação de galpões fabris e ambientes com altíssima indução magnética (ex: salas de solda robótica e fornos elétricos).",
+          "<strong>Protocolos Comuns:</strong> Backbones de redes Profinet e conexões de servidores SCADA.",
+          "<strong>Limite Técnico:</strong> Pode cobrir de 2 km (Multimodo) até mais de 10 km (Monomodo) sem perder sinal."
+        ]
       },
       wireless: {
-        titulo: "Wireless (Redes Sem Fio)",
-        desc: "Usado principalmente em sensores sem fio (WirelessHART/Wi-Fi industrial) instalados em locais de difícil acesso, ou em pontes rolantes e AGVs (veículos guiados automaticamente) onde cabos físicos quebrariam devido ao movimento constante."
+        titulo: "Wireless (Redes Sem Fio Industriais)",
+        desc: "Comunicação por ondas de rádio projetada para tolerar os obstáculos metálicos crônicos de uma fábrica. Possui frequências específicas e criptografia pesada para evitar invasões ou quedas de sinal provocadas por outras máquinas.",
+        specs: [
+          "<strong>Onde é usado:</strong> Leituras de sensores em tanques inflamáveis, comunicação com pontes rolantes em movimento e em AGVs (veículos autônomos que andam pela fábrica carregando peças).",
+          "<strong>Protocolos Comuns:</strong> WirelessHART, ISA100.11a e Wi-Fi Industrial (IEEE 802.11ax/industrial).",
+          "<strong>Limite Técnico:</strong> Depende de visada limpa, sujeito a barreiras físicas móveis (como empilhadeiras)."
+        ]
       }
     };
 
-    // Dados Dinâmicos das Topologias
+    // Dados Expandidos das Topologias
     const dadosTopologias = {
       estrela: {
-        titulo: "Layout em Estrela",
-        desc: "Nesta arquitetura, todos os equipamentos da fábrica (CLPs, IHMs, robôs) são conectados individualmente a um dispositivo central, geralmente um Switch Industrial.",
-        vantagens: ["Se um cabo quebrar, apenas aquela máquina isolada perde a conexão.", "Muito fácil de identificar falhas e adicionar novas máquinas à rede."],
-        desvantagens: ["Dependência total do Switch central (se ele queimar, a fábrica inteira para).", "Gasto volumoso com cabos, já que todos devem correr até o centro."]
+        titulo: "Layout em Estrela (Star Network)",
+        desc: "Toda a comunicação passa por um nó centralizador, que distribui as informações individualmente para cada máquina. Se tornou o layout dominante com o crescimento da Ethernet Industrial no chão de fábrica.",
+        specs: [
+          "<strong>Equipamento Central:</strong> Switch Industrial (Gerenciável ou Não Gerenciável).",
+          "<strong>Foco de Aplicação:</strong> Células robotizadas integradas, linhas de montagem modernas e controle de processos críticos."
+        ],
+        vantagens: [
+          "Isolamento de Falhas: Se o cabo de um robô quebrar, apenas ele para; o resto da fábrica continua operando normalmente.",
+          "Manutenção Ágil: Muito fácil localizar problemas em cabos defeituosos olhando os LEDs indicadores do Switch central.",
+          "Fácil Expansão: Adicionar uma nova máquina exige apenas passar um cabo dela até o Switch central, sem mexer nos outros dispositivos."
+        ],
+        desvantagens: [
+          "Ponto Único de Falha: Toda a rede depende do Switch central. Se ele queimar ou perder energia, a comunicação de todo o setor morre de uma só vez.",
+          "Custo de Infraestrutura: Exige uma metragem de cabos muito maior, gerando maior gasto financeiro e canaletas mais cheias."
+        ]
       },
       barramento: {
-        titulo: "Layout em Barramento",
-        desc: "Aqui, existe apenas um único cabo longo (chamado tronco ou bus) que passa por toda a fábrica, e as máquinas se conectam diretamente ao longo dele (comum em redes clássicas como Profibus-DP e Modbus RTU).",
-        vantagens: ["Economia massiva de cabos e instalação extremamente barata.", "Estrutura simples e direta para arquiteturas lineares."],
-        desvantagens: ["Se o cabo principal se romper em qualquer ponto, a rede inteira cai ou se divide.", "Muito difícil diagnosticar em qual ponto exato do cabo ocorreu o problema."]
+        titulo: "Layout em Barramento (Bus Network)",
+        desc: "Todos os dispositivos da rede se conectam em paralelo ao longo de um único cabo mestre contínuo. É o modelo clássico que dominou a indústria nas décadas de 1990 e 2000 através das redes de campo descentralizadas.",
+        specs: [
+          "<strong>Equipamento Central:</strong> Não existe. A comunicação usa terminadores nas pontas do cabo para evitar eco de sinal.",
+          "<strong>Foco de Aplicação:</strong> Redes de sensores de campo distribuídos e automação clássica com arquitetura linear de esteiras."
+        ],
+        vantagens: [
+          "Economia de Cabos: Usa muito menos cabos em relação à estrela, reduzindo o peso nas canaletas elétricas.",
+          "Instalação Barata: Arquitetura limpa e simples para cobrir grandes comprimentos de esteiras rolantes lineares.",
+          "Menos Equipamentos: Não precisa comprar Switches intermediários para fazer a rede funcionar."
+        ],
+        desvantagens: [
+          "Colapso Total por Rompimento: Se o cabo principal partir no meio da fábrica devido a um acidente, toda a comunicação após o corte cai.",
+          "Diagnóstico Complexo: Se um dispositivo injetar ruído na rede, ele contamina o barramento inteiro, tornando um pesadelo descobrir qual máquina está gerando a falha."
+        ]
       }
     };
 
@@ -364,8 +435,11 @@
       document.querySelectorAll('#aba-cabos .card').forEach(c => c.classList.remove('selected'));
       card.classList.add('selected');
       
-      document.getElementById('cabo-titulo').innerText = dadosCabos[chave].titulo;
-      document.getElementById('cabo-desc').innerText = dadosCabos[chave].desc;
+      const dados = dadosCabos[chave];
+      document.getElementById('cabo-titulo').innerText = dados.titulo;
+      document.getElementById('cabo-desc').innerText = dados.desc;
+      
+      document.getElementById('cabo-specs').innerHTML = dados.specs.map(item => `<div class="spec-item">${item}</div>`).join('');
     }
 
     // Função de clique nos botões de Topologia
@@ -377,7 +451,7 @@
       document.getElementById('topo-titulo').innerText = dados.titulo;
       document.getElementById('topo-desc').innerText = dados.desc;
       
-      // Renderiza as listas dinamicamente
+      document.getElementById('topo-specs').innerHTML = dados.specs.map(item => `<div class="spec-item">${item}</div>`).join('');
       document.getElementById('topo-vantagens').innerHTML = dados.vantagens.map(item => `<li>${item}</li>`).join('');
       document.getElementById('topo-desvantagens').innerHTML = dados.desvantagens.map(item => `<li>${item}</li>`).join('');
     }
