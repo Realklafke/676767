@@ -122,6 +122,7 @@
       flex-direction: row;
       overflow-x: auto;
       border-bottom: 1px solid var(--border);
+      flex-wrap: nowrap;
     }
 
     @media (min-width: 900px) {
@@ -131,6 +132,7 @@
         min-width: 280px;
         border-bottom: none;
         border-right: 1px solid var(--border);
+        height: 100%;
       }
     }
 
@@ -148,6 +150,8 @@
       align-items: center;
       gap: 12px;
       white-space: nowrap;
+      flex: 1;
+      min-width: fit-content;
     }
 
     .nav-item:hover {
@@ -173,6 +177,7 @@
       padding: 40px;
       background: var(--white);
       min-height: 600px;
+      overflow-x: hidden;
     }
 
     .section-content {
@@ -191,7 +196,7 @@
 
     .options-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 15px;
       margin-bottom: 30px;
     }
@@ -204,6 +209,7 @@
       text-align: center;
       cursor: pointer;
       transition: all 0.3s ease;
+      user-select: none;
     }
 
     .option-card:hover {
@@ -215,17 +221,20 @@
     .option-card.selected {
       border-color: var(--accent);
       background: #e0f7fa;
+      transform: translateY(-3px);
     }
 
     .option-card .option-icon {
       font-size: 2.5rem;
       margin-bottom: 10px;
+      display: block;
     }
 
     .option-card .option-title {
       font-weight: 700;
       color: var(--primary);
       font-size: 1.1rem;
+      display: block;
     }
 
     .display-panel {
@@ -234,6 +243,7 @@
       padding: 30px;
       border: 1px solid var(--border);
       box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      margin-bottom: 20px;
     }
 
     .display-panel h2 {
@@ -243,6 +253,12 @@
       display: flex;
       align-items: center;
       gap: 10px;
+    }
+
+    .display-panel h3 {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin: 20px 0 10px 0;
     }
 
     .display-desc {
@@ -328,10 +344,14 @@
 
     .quiz-question {
       margin-bottom: 20px;
+      padding: 15px;
+      background: white;
+      border-radius: 12px;
+      border: 1px solid var(--border);
     }
 
     .quiz-question h4 {
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       color: var(--primary);
     }
 
@@ -348,10 +368,12 @@
       border-radius: 8px;
       cursor: pointer;
       transition: all 0.3s ease;
+      font-size: 1rem;
     }
 
-    .quiz-option:hover {
+    .quiz-option:hover:not(.disabled) {
       border-color: var(--accent);
+      background: #e0f7fa;
     }
 
     .quiz-option.correct {
@@ -362,6 +384,11 @@
     .quiz-option.incorrect {
       border-color: var(--danger);
       background: #ffebee;
+    }
+
+    .quiz-option.disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
     }
 
     .quiz-result {
@@ -394,6 +421,7 @@
       gap: 15px;
       flex-wrap: wrap;
       margin: 15px 0;
+      align-items: center;
     }
 
     .demo-controls input[type="range"] {
@@ -421,10 +449,47 @@
       font-weight: bold;
     }
 
+    .btn-primary {
+      padding: 12px 30px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 151, 167, 0.3);
+    }
+
+    .info-box {
+      padding: 15px;
+      background: #e3f2fd;
+      border-left: 4px solid var(--info);
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+
     @media (max-width: 600px) {
-      .hero-header h1 { font-size: 2rem; }
+      .hero-header h1 { font-size: 1.8rem; }
       .content-area { padding: 20px; }
-      .hero-header { padding: 30px 20px; }
+      .hero-header { padding: 20px; }
+      .options-grid { grid-template-columns: 1fr 1fr; }
+      .display-panel { padding: 20px; }
+      .nav-item { padding: 15px; font-size: 0.9rem; }
+      .header-stats { gap: 10px; }
+      .stat-item { padding: 8px 12px; }
+      .stat-item .number { font-size: 1.2rem; }
+    }
+
+    @media (max-width: 400px) {
+      .options-grid { grid-template-columns: 1fr; }
+      .quiz-options { flex-direction: column; }
     }
   </style>
 </head>
@@ -436,7 +501,7 @@
       <p>Um guia acadêmico completo sobre infraestrutura, topologias, protocolos de comunicação e hardwares que movem a automação nas fábricas modernas.</p>
       <div class="header-stats">
         <div class="stat-item">
-          <span class="number">8+</span>
+          <span class="number">6</span>
           <span class="label">Protocolos</span>
         </div>
         <div class="stat-item">
@@ -448,44 +513,44 @@
           <span class="label">Meios Físicos</span>
         </div>
         <div class="stat-item">
-          <span class="number">12</span>
+          <span class="number">5</span>
           <span class="label">Questões Quiz</span>
         </div>
       </div>
     </header>
 
     <div class="main-layout">
-      <nav class="nav-menu">
-        <button class="nav-item active" onclick="mudarSecao('secao-fisico', this)">🔌 Meios Físicos</button>
-        <button class="nav-item" onclick="mudarSecao('secao-topologia', this)">🕸️ Topologias</button>
-        <button class="nav-item" onclick="mudarSecao('secao-protocolos', this)">🗣️ Protocolos</button>
-        <button class="nav-item" onclick="mudarSecao('secao-hardware', this)">🖥️ Hardware</button>
-        <button class="nav-item" onclick="mudarSecao('secao-seguranca', this)">🔒 Segurança</button>
-        <button class="nav-item" onclick="mudarSecao('secao-quiz', this)">🧠 Quiz</button>
+      <nav class="nav-menu" role="tablist">
+        <button class="nav-item active" role="tab" onclick="mudarSecao('secao-fisico', this)">🔌 Meios Físicos</button>
+        <button class="nav-item" role="tab" onclick="mudarSecao('secao-topologia', this)">🕸️ Topologias</button>
+        <button class="nav-item" role="tab" onclick="mudarSecao('secao-protocolos', this)">🗣️ Protocolos</button>
+        <button class="nav-item" role="tab" onclick="mudarSecao('secao-hardware', this)">🖥️ Hardware</button>
+        <button class="nav-item" role="tab" onclick="mudarSecao('secao-seguranca', this)">🔒 Segurança</button>
+        <button class="nav-item" role="tab" onclick="mudarSecao('secao-quiz', this)">🧠 Quiz</button>
       </nav>
 
       <div class="content-area">
         <!-- Seção Meios Físicos -->
-        <div id="secao-fisico" class="section-content active">
+        <div id="secao-fisico" class="section-content active" role="tabpanel">
           <h2>🔌 Meios Físicos de Transmissão</h2>
           <p class="display-desc">Os meios físicos são responsáveis por transportar os sinais entre os dispositivos em uma rede industrial. Cada meio possui características específicas que o tornam adequado para diferentes aplicações.</p>
 
           <div class="options-grid">
-            <div class="option-card" onclick="mostrarConteudo('fisico-cobre', this)">
-              <div class="option-icon">⚡</div>
-              <div class="option-title">Cabo de Cobre</div>
+            <div class="option-card selected" onclick="mostrarConteudo('fisico-cobre', this)">
+              <span class="option-icon">⚡</span>
+              <span class="option-title">Cabo de Cobre</span>
             </div>
             <div class="option-card" onclick="mostrarConteudo('fisico-fibra', this)">
-              <div class="option-icon">💡</div>
-              <div class="option-title">Fibra Óptica</div>
+              <span class="option-icon">💡</span>
+              <span class="option-title">Fibra Óptica</span>
             </div>
             <div class="option-card" onclick="mostrarConteudo('fisico-wireless', this)">
-              <div class="option-icon">📡</div>
-              <div class="option-title">Wireless</div>
+              <span class="option-icon">📡</span>
+              <span class="option-title">Wireless</span>
             </div>
             <div class="option-card" onclick="mostrarConteudo('fisico-hybrid', this)">
-              <div class="option-icon">🔀</div>
-              <div class="option-title">Sistemas Híbridos</div>
+              <span class="option-icon">🔀</span>
+              <span class="option-title">Sistemas Híbridos</span>
             </div>
           </div>
 
@@ -516,6 +581,10 @@
                 </ul>
               </div>
             </div>
+
+            <div class="info-box">
+              <strong>💡 Aplicação:</strong> Comum em sistemas de automação predial, controle de processos e redes locais industriais.
+            </div>
           </div>
 
           <div id="fisico-fibra" class="display-panel" style="display:none;">
@@ -543,6 +612,10 @@
                   <li>Equipamentos especializados</li>
                 </ul>
               </div>
+            </div>
+
+            <div class="info-box">
+              <strong>💡 Aplicação:</strong> Ideal para backbones de rede, conexões entre prédios e ambientes com alta interferência eletromagnética.
             </div>
           </div>
 
@@ -572,6 +645,10 @@
                 </ul>
               </div>
             </div>
+
+            <div class="info-box">
+              <strong>💡 Aplicação:</strong> Monitoramento remoto, dispositivos móveis, sensores em locais de difícil acesso.
+            </div>
           </div>
 
           <div id="fisico-hybrid" class="display-panel" style="display:none;">
@@ -586,38 +663,41 @@
               <li>Interface para sensores e atuadores</li>
               <li>Protocolos de comunicação integrados</li>
             </ul>
+            <div class="info-box">
+              <strong>💡 Aplicação:</strong> Sistemas que requerem flexibilidade e diferentes tipos de conectividade em uma mesma planta.
+            </div>
           </div>
         </div>
 
         <!-- Seção Topologias -->
-        <div id="secao-topologia" class="section-content">
+        <div id="secao-topologia" class="section-content" role="tabpanel">
           <h2>🕸️ Topologias de Rede</h2>
           <p class="display-desc">A topologia define como os dispositivos estão interconectados em uma rede industrial. Cada topologia oferece diferentes níveis de redundância, performance e custo.</p>
 
           <div class="options-grid">
-            <div class="option-card" onclick="mostrarConteudo('topo-estrela', this)">
-              <div class="option-icon">⭐</div>
-              <div class="option-title">Estrela</div>
+            <div class="option-card selected" onclick="mostrarConteudo('topo-estrela', this)">
+              <span class="option-icon">⭐</span>
+              <span class="option-title">Estrela</span>
             </div>
             <div class="option-card" onclick="mostrarConteudo('topo-anel', this)">
-              <div class="option-icon">⭕</div>
-              <div class="option-title">Anel</div>
+              <span class="option-icon">⭕</span>
+              <span class="option-title">Anel</span>
             </div>
             <div class="option-card" onclick="mostrarConteudo('topo-barramento', this)">
-              <div class="option-icon">➖</div>
-              <div class="option-title">Barramento</div>
+              <span class="option-icon">➖</span>
+              <span class="option-title">Barramento</span>
             </div>
             <div class="option-card" onclick="mostrarConteudo('topo-malha', this)">
-              <div class="option-icon">🔗</div>
-              <div class="option-title">Malha</div>
+              <span class="option-icon">🔗</span>
+              <span class="option-title">Malha</span>
             </div>
             <div class="option-card" onclick="mostrarConteudo('topo-arvore', this)">
-              <div class="option-icon">🌳</div>
-              <div class="option-title">Árvore</div>
+              <span class="option-icon">🌳</span>
+              <span class="option-title">Árvore</span>
             </div>
             <div class="option-card" onclick="mostrarConteudo('topo-hybrid', this)">
-              <div class="option-icon">🔀</div>
-              <div class="option-title">Híbrida</div>
+              <span class="option-icon">🔀</span>
+              <span class="option-title">Híbrida</span>
             </div>
           </div>
 
@@ -632,6 +712,7 @@
               <tr><th>Vantagens</th><th>Desvantagens</th></tr>
               <tr><td>Fácil gerenciamento</td><td>Ponto único de falha</td></tr>
               <tr><td>Isolamento de problemas</td><td>Custo maior com cabos</td></tr>
+              <tr><td>Alta performance</td><td>Dependência do switch central</td></tr>
             </table>
           </div>
 
@@ -643,8 +724,8 @@
             </div>
             <p class="display-desc">Dispositivos conectados em um loop, permitindo redundância. Se um ponto falha, a comunicação continua pelo outro caminho.</p>
             <div class="pros-cons">
-              <div class="list-box pros"><h4>Vantagens</h4><ul><li>Redundância automática</li><li>Tempo de recuperação rápido</li></ul></div>
-              <div class="list-box cons"><h4>Desvantagens</h4><ul><li>Configuração mais complexa</li><li>Performance pode degradar</li></ul></div>
+              <div class="list-box pros"><h4>Vantagens</h4><ul><li>Redundância automática</li><li>Tempo de recuperação rápido</li><li>Boa para redes críticas</li></ul></div>
+              <div class="list-box cons"><h4>Desvantagens</h4><ul><li>Configuração mais complexa</li><li>Performance pode degradar</li><li>Custo mais elevado</li></ul></div>
             </div>
           </div>
 
@@ -655,6 +736,10 @@
               <span class="badge">Econômica</span>
             </div>
             <p class="display-desc">Todos os dispositivos compartilham o mesmo cabo. Baixo custo, mas a falha em um ponto pode afetar toda a comunicação.</p>
+            <div class="pros-cons">
+              <div class="list-box pros"><h4>Vantagens</h4><ul><li>Baixo custo de cabos</li><li>Fácil instalação</li><li>Ideal para redes pequenas</li></ul></div>
+              <div class="list-box cons"><h4>Desvantagens</h4><ul><li>Falha afeta toda a rede</li><li>Limitação de distância</li><li>Menor performance</li></ul></div>
+            </div>
           </div>
 
           <div id="topo-malha" class="display-panel" style="display:none;">
@@ -664,6 +749,10 @@
               <span class="badge warning">Industrial</span>
             </div>
             <p class="display-desc">Cada dispositivo se conecta a vários outros, oferecendo a maior redundância e confiabilidade para aplicações críticas.</p>
+            <div class="pros-cons">
+              <div class="list-box pros"><h4>Vantagens</h4><ul><li>Máxima redundância</li><li>Alta confiabilidade</li><li>Auto-recuperação</li></ul></div>
+              <div class="list-box cons"><h4>Desvantagens</h4><ul><li>Custo muito elevado</li><li>Complexidade de instalação</li><li>Gerenciamento complexo</li></ul></div>
+            </div>
           </div>
 
           <div id="topo-arvore" class="display-panel" style="display:none;">
@@ -673,6 +762,10 @@
               <span class="badge">Hierárquica</span>
             </div>
             <p class="display-desc">Combinação de topologias estrela e barramento, criando uma estrutura hierárquica ideal para redes industriais em múltiplos níveis.</p>
+            <div class="pros-cons">
+              <div class="list-box pros"><h4>Vantagens</h4><ul><li>Escalabilidade</li><li>Organização hierárquica</li><li>Fácil expansão</li></ul></div>
+              <div class="list-box cons"><h4>Desvantagens</h4><ul><li>Dependência de níveis superiores</li><li>Complexidade crescente</li></ul></div>
+            </div>
           </div>
 
           <div id="topo-hybrid" class="display-panel" style="display:none;">
@@ -682,38 +775,41 @@
               <span class="badge warning">Complexa</span>
             </div>
             <p class="display-desc">Combinação de duas ou mais topologias para atender requisitos específicos de uma planta industrial.</p>
+            <div class="info-box">
+              <strong>💡 Aplicação:</strong> Redes industriais grandes e complexas que exigem diferentes características em diferentes áreas.
+            </div>
           </div>
         </div>
 
         <!-- Seção Protocolos -->
-        <div id="secao-protocolos" class="section-content">
+        <div id="secao-protocolos" class="section-content" role="tabpanel">
           <h2>🗣️ Protocolos de Comunicação</h2>
           <p class="display-desc">Os protocolos definem as regras de comunicação entre dispositivos em uma rede industrial. Cada protocolo é otimizado para diferentes aplicações e requisitos.</p>
 
           <div class="options-grid">
-            <div class="option-card" onclick="mostrarConteudo('proto-profinet', this)">
-              <div class="option-icon">📦</div>
-              <div class="option-title">PROFINET</div>
+            <div class="option-card selected" onclick="mostrarConteudo('proto-profinet', this)">
+              <span class="option-icon">📦</span>
+              <span class="option-title">PROFINET</span>
             </div>
             <div class="option-card" onclick="mostrarConteudo('proto-ethernetip', this)">
-              <div class="option-icon">🌐</div>
-              <div class="option-title">EtherNet/IP</div>
+              <span class="option-icon">🌐</span>
+              <span class="option-title">EtherNet/IP</span>
             </div>
             <div class="option-card" onclick="mostrarConteudo('proto-modbus', this)">
-              <div class="option-icon">🔧</div>
-              <div class="option-title">Modbus</div>
+              <span class="option-icon">🔧</span>
+              <span class="option-title">Modbus</span>
             </div>
             <div class="option-card" onclick="mostrarConteudo('proto-canopen', this)">
-              <div class="option-icon">🚗</div>
-              <div class="option-title">CANopen</div>
+              <span class="option-icon">🚗</span>
+              <span class="option-title">CANopen</span>
             </div>
             <div class="option-card" onclick="mostrarConteudo('proto-opcua', this)">
-              <div class="option-icon">🔗</div>
-              <div class="option-title">OPC UA</div>
+              <span class="option-icon">🔗</span>
+              <span class="option-title">OPC UA</span>
             </div>
             <div class="option-card" onclick="mostrarConteudo('proto-mqtt', this)">
-              <div class="option-icon">📡</div>
-              <div class="option-title">MQTT</div>
+              <span class="option-icon">📡</span>
+              <span class="option-title">MQTT</span>
             </div>
           </div>
 
@@ -729,7 +825,11 @@
               <li>Taxas de 100 Mbps a 1 Gbps</li>
               <li>Tempo de ciclo &lt; 1ms</li>
               <li>Integração com PROFIBUS</li>
+              <li>Suporte a redundância</li>
             </ul>
+            <div class="info-box">
+              <strong>💡 Aplicação:</strong> Controle de processos, automação de fábricas, sistemas críticos.
+            </div>
           </div>
 
           <div id="proto-ethernetip" class="display-panel" style="display:none;">
@@ -739,6 +839,11 @@
               <span class="badge info">CIP</span>
             </div>
             <p class="display-desc">Protocolo baseado no Common Industrial Protocol (CIP), amplamente utilizado em sistemas de automação da Rockwell Automation.</p>
+            <ul style="margin: 15px 0; padding-left: 20px; color: var(--text-muted);">
+              <li>Comunicação implícita e explícita</li>
+              <li>Integração com sistemas legados</li>
+              <li>Suporte a redes convergentes</li>
+            </ul>
           </div>
 
           <div id="proto-modbus" class="display-panel" style="display:none;">
@@ -748,6 +853,11 @@
               <span class="badge success">Simples</span>
             </div>
             <p class="display-desc">Protocolo simples e amplamente utilizado para comunicação entre dispositivos de automação, com variações Modbus RTU e Modbus TCP.</p>
+            <ul style="margin: 15px 0; padding-left: 20px; color: var(--text-muted);">
+              <li>Ampla compatibilidade</li>
+              <li>Fácil implementação</li>
+              <li>Baixo custo</li>
+            </ul>
           </div>
 
           <div id="proto-canopen" class="display-panel" style="display:none;">
@@ -757,6 +867,11 @@
               <span class="badge info">Determinístico</span>
             </div>
             <p class="display-desc">Protocolo baseado no CAN (Controller Area Network), utilizado em sistemas embarcados e automação industrial.</p>
+            <ul style="margin: 15px 0; padding-left: 20px; color: var(--text-muted);">
+              <li>Alta confiabilidade</li>
+              <li>Baixa latência</li>
+              <li>Ideal para sistemas de segurança</li>
+            </ul>
           </div>
 
           <div id="proto-opcua" class="display-panel" style="display:none;">
@@ -766,6 +881,11 @@
               <span class="badge info">Interoperável</span>
             </div>
             <p class="display-desc">Protocolo moderno para comunicação M2M e integração com sistemas de nível empresarial (MES, ERP).</p>
+            <ul style="margin: 15px 0; padding-left: 20px; color: var(--text-muted);">
+              <li>Segurança integrada</li>
+              <li>Modelo de dados flexível</li>
+              <li>Comunicação cross-platform</li>
+            </ul>
           </div>
 
           <div id="proto-mqtt" class="display-panel" style="display:none;">
@@ -775,30 +895,35 @@
               <span class="badge">Leve</span>
             </div>
             <p class="display-desc">Protocolo publish/subscribe para dispositivos IoT, ideal para coleta de dados de sensores e atuadores.</p>
+            <ul style="margin: 15px 0; padding-left: 20px; color: var(--text-muted);">
+              <li>Baixo consumo de banda</li>
+              <li>Escalabilidade</li>
+              <li>Suporte a QoS</li>
+            </ul>
           </div>
         </div>
 
         <!-- Seção Hardware -->
-        <div id="secao-hardware" class="section-content">
+        <div id="secao-hardware" class="section-content" role="tabpanel">
           <h2>🖥️ Hardwares Industriais</h2>
           <p class="display-desc">Os hardwares são os dispositivos físicos que compõem a infraestrutura de uma rede industrial. Cada componente desempenha um papel específico na comunicação e automação.</p>
 
           <div class="options-grid">
-            <div class="option-card" onclick="mostrarConteudo('hw-plc', this)">
-              <div class="option-icon">🧠</div>
-              <div class="option-title">CLP</div>
+            <div class="option-card selected" onclick="mostrarConteudo('hw-plc', this)">
+              <span class="option-icon">🧠</span>
+              <span class="option-title">CLP</span>
             </div>
             <div class="option-card" onclick="mostrarConteudo('hw-sensor', this)">
-              <div class="option-icon">📊</div>
-              <div class="option-title">Sensores</div>
+              <span class="option-icon">📊</span>
+              <span class="option-title">Sensores</span>
             </div>
             <div class="option-card" onclick="mostrarConteudo('hw-atuador', this)">
-              <div class="option-icon">⚙️</div>
-              <div class="option-title">Atuadores</div>
+              <span class="option-icon">⚙️</span>
+              <span class="option-title">Atuadores</span>
             </div>
             <div class="option-card" onclick="mostrarConteudo('hw-switch', this)">
-              <div class="option-icon">🔀</div>
-              <div class="option-title">Switches</div>
+              <span class="option-icon">🔀</span>
+              <span class="option-title">Switches</span>
             </div>
           </div>
 
@@ -813,7 +938,11 @@
               <li>Linguagens de programação: Ladder, FBD, ST</li>
               <li>Tempo de ciclo: &lt; 10ms</li>
               <li>Integração com redes industriais</li>
+              <li>Entradas e saídas digitais/analógicas</li>
             </ul>
+            <div class="info-box">
+              <strong>💡 Aplicação:</strong> Controle de processos, automação de máquinas, sistemas de supervisão.
+            </div>
           </div>
 
           <div id="hw-sensor" class="display-panel" style="display:none;">
@@ -823,6 +952,11 @@
               <span class="badge">4-20mA</span>
             </div>
             <p class="display-desc">Dispositivos que convertem grandezas físicas em sinais elétricos para monitoramento e controle.</p>
+            <ul style="margin: 15px 0; padding-left: 20px; color: var(--text-muted);">
+              <li>Sensores de temperatura, pressão, nível, fluxo</li>
+              <li>Sensores de proximidade e fotoelétricos</li>
+              <li>Encoders e sensores de posição</li>
+            </ul>
           </div>
 
           <div id="hw-atuador" class="display-panel" style="display:none;">
@@ -832,6 +966,11 @@
               <span class="badge info">Controle</span>
             </div>
             <p class="display-desc">Dispositivos que convertem sinais de controle em ações físicas: motores, válvulas, relés, etc.</p>
+            <ul style="margin: 15px 0; padding-left: 20px; color: var(--text-muted);">
+              <li>Motores elétricos e servo-motores</li>
+              <li>Válvulas e atuadores pneumáticos</li>
+              <li>Relés e contatores</li>
+            </ul>
           </div>
 
           <div id="hw-switch" class="display-panel" style="display:none;">
@@ -841,11 +980,17 @@
               <span class="badge">MRP</span>
             </div>
             <p class="display-desc">Dispositivos de rede robustos para ambientes industriais, com suporte a protocolos de redundância e temperatura estendida.</p>
+            <ul style="margin: 15px 0; padding-left: 20px; color: var(--text-muted);">
+              <li>Switch gerenciáveis e não-gerenciáveis</li>
+              <li>Suporte a MRP e RSTP</li>
+              <li>Faixa de temperatura: -40°C a 75°C</li>
+              <li>Montagem em trilho DIN</li>
+            </ul>
           </div>
         </div>
 
         <!-- Seção Segurança -->
-        <div id="secao-seguranca" class="section-content">
+        <div id="secao-seguranca" class="section-content" role="tabpanel">
           <h2>🔒 Segurança em Redes Industriais</h2>
           <p class="display-desc">A segurança cibernética é crítica para redes industriais, protegendo sistemas e dados contra ameaças que podem comprometer a produção e a integridade física.</p>
 
@@ -862,6 +1007,7 @@
               <li>Ataques de negação de serviço (DDoS)</li>
               <li>Engenharia social</li>
               <li>Atualizações não autorizadas</li>
+              <li>Espionagem industrial</li>
             </ul>
 
             <h3>Medidas de Proteção</h3>
@@ -873,6 +1019,7 @@
                   <li>Firewalls industriais</li>
                   <li>Autenticação forte</li>
                   <li>Monitoramento contínuo</li>
+                  <li>Atualizações regulares</li>
                 </ul>
               </div>
               <div class="list-box cons">
@@ -881,6 +1028,7 @@
                   <li>Equipamentos legados</li>
                   <li>Atualizações complexas</li>
                   <li>Disponibilidade 24/7</li>
+                  <li>Treinamento de pessoal</li>
                 </ul>
               </div>
             </div>
@@ -897,11 +1045,15 @@
               </div>
               <p id="segurancaDescricao" style="color: var(--text-muted); margin-top: 10px;">Nível moderado de segurança - implemente medidas adicionais.</p>
             </div>
+
+            <div class="info-box">
+              <strong>📋 Padrões de Segurança:</strong> IEC 62443, NIST SP 800-82, ISA-99.
+            </div>
           </div>
         </div>
 
         <!-- Seção Quiz -->
-        <div id="secao-quiz" class="section-content">
+        <div id="secao-quiz" class="section-content" role="tabpanel">
           <h2>🧠 Quiz de Conhecimento</h2>
           <p class="display-desc">Teste seus conhecimentos sobre redes industriais! Responda às perguntas abaixo e verifique seu aprendizado.</p>
 
@@ -963,7 +1115,7 @@
               </div>
 
               <div style="margin-top: 30px; text-align: center;">
-                <button onclick="reiniciarQuiz()" style="padding: 12px 30px; background: var(--accent); color: white; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: 0.3s;">
+                <button class="btn-primary" onclick="reiniciarQuiz()">
                   🔄 Reiniciar Quiz
                 </button>
                 <span id="quiz-pontuacao" style="margin-left: 20px; font-weight: 700; font-size: 1.2rem; color: var(--primary);">
@@ -991,15 +1143,20 @@
     function mudarSecao(id, element) {
       // Remove active de todos os itens do menu
       document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-      element.classList.add('active');
+      if (element) element.classList.add('active');
 
       // Esconde todas as seções e mostra a selecionada
       document.querySelectorAll('.section-content').forEach(section => section.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
+      const target = document.getElementById(id);
+      if (target) {
+        target.classList.add('active');
+        // Rolagem suave para o topo da seção
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
 
     function mostrarConteudo(id, element) {
-      // Remove selected de todos os cards
+      // Remove selected de todos os cards no mesmo grid
       const parent = element.closest('.options-grid');
       if (parent) {
         parent.querySelectorAll('.option-card').forEach(card => card.classList.remove('selected'));
@@ -1013,6 +1170,8 @@
         const target = document.getElementById(id);
         if (target) {
           target.style.display = 'block';
+          // Rolagem suave para o conteúdo
+          target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
       }
     }
@@ -1024,7 +1183,10 @@
       const opcoes = element.closest('.quiz-options').querySelectorAll('.quiz-option');
 
       // Desabilita todas as opções
-      opcoes.forEach(btn => btn.style.pointerEvents = 'none');
+      opcoes.forEach(btn => {
+        btn.classList.add('disabled');
+        btn.style.pointerEvents = 'none';
+      });
 
       const correta = quizRespostas[pergunta].resposta;
       let acertou = resposta === correta;
@@ -1059,14 +1221,19 @@
         const resultado = document.getElementById(`quiz-result-${i}`);
         resultado.style.display = 'none';
         resultado.className = 'quiz-result';
+        resultado.textContent = '';
 
         const opcoes = document.querySelector(`#pergunta-${i} .quiz-options`).querySelectorAll('.quiz-option');
         opcoes.forEach(btn => {
           btn.className = 'quiz-option';
           btn.style.pointerEvents = 'auto';
+          btn.classList.remove('disabled');
         });
       }
       document.getElementById('quiz-pontuacao').textContent = 'Acertos: 0/5';
+      
+      // Scroll para o topo do quiz
+      document.getElementById('secao-quiz').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     function atualizarSeguranca(valor) {
@@ -1074,6 +1241,9 @@
       const nivel = document.getElementById('nivelSeguranca');
       const descricao = document.getElementById('segurancaDescricao');
 
+      if (!progress || !nivel || !descricao) return;
+
+      valor = parseInt(valor);
       progress.style.width = valor + '%';
       progress.textContent = valor + '%';
       nivel.textContent = valor + '%';
@@ -1093,28 +1263,48 @@
       }
     }
 
-    // Inicializa o primeiro painel para cada seção
+    // Inicialização da página
     document.addEventListener('DOMContentLoaded', function() {
-      // Mostra o primeiro painel de Meios Físicos
-      const primeiroPainelFisico = document.querySelector('#secao-fisico .display-panel');
-      if (primeiroPainelFisico) primeiroPainelFisico.style.display = 'block';
-
-      // Mostra o primeiro painel de Topologias
-      const primeiroPainelTopo = document.querySelector('#secao-topologia .display-panel');
-      if (primeiroPainelTopo) primeiroPainelTopo.style.display = 'block';
-
-      // Mostra o primeiro painel de Protocolos
-      const primeiroPainelProto = document.querySelector('#secao-protocolos .display-panel');
-      if (primeiroPainelProto) primeiroPainelProto.style.display = 'block';
-
-      // Mostra o primeiro painel de Hardware
-      const primeiroPainelHW = document.querySelector('#secao-hardware .display-panel');
-      if (primeiroPainelHW) primeiroPainelHW.style.display = 'block';
+      // Mostra o primeiro painel de cada seção
+      const secoes = ['secao-fisico', 'secao-topologia', 'secao-protocolos', 'secao-hardware'];
+      secoes.forEach(secaoId => {
+        const section = document.getElementById(secaoId);
+        if (section) {
+          const primeiroPainel = section.querySelector('.display-panel');
+          if (primeiroPainel) {
+            primeiroPainel.style.display = 'block';
+          }
+        }
+      });
 
       // Inicializa slider de segurança
       const slider = document.getElementById('segurancaSlider');
-      if (slider) atualizarSeguranca(slider.value);
+      if (slider) {
+        atualizarSeguranca(slider.value);
+        slider.addEventListener('input', function() {
+          atualizarSeguranca(this.value);
+        });
+      }
+
+      // Adiciona listeners para navegação por teclado
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Home') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
     });
+
+    // Função para compatibilidade com navegadores antigos
+    if (!Element.prototype.closest) {
+      Element.prototype.closest = function(s) {
+        var el = this;
+        do {
+          if (el.matches(s)) return el;
+          el = el.parentElement || el.parentNode;
+        } while (el !== null && el.nodeType === 1);
+        return null;
+      };
+    }
   </script>
 
 </body>
